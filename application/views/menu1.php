@@ -12,7 +12,7 @@
 					<a class="nav-link" href="<?php echo $addproduct?>" style="color: #C49774;">Add products</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo $products?>" style="color: #C49774;">Products</a>
+					<a class="nav-link" href="<?php echo $products2?>" style="color: #C49774;">Products</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo $salestatus?>" style="color: #C49774;">Sale status</a>

@@ -9,7 +9,7 @@
 					<a class="nav-link " style="color: #C49774;" href="<?php echo $PATH?>">Home</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo $products?>" style="color: #C49774;">Products</a>
+					<a class="nav-link" href="<?php echo $products2?>" style="color: #C49774;">Products</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo $urllogin?>" style="color: #C49774;">Login</a>

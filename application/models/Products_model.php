@@ -119,6 +119,11 @@ class Products_model extends CI_Model{
 
 	public $address;
 
+	public $category_id;
+	public $category_name;
+
+	public $productid;
+
 	
 	public static function saveproduct($productname, $description, $price, $currency, $inventory, $country, $city, $category, $address)
 	{
@@ -131,6 +136,7 @@ class Products_model extends CI_Model{
 		// $result1 = $c->db->query("INSERT INTO `Necklaces` (`productid`, `productname`, `description`,`price`, `currency`, `inventory`, `category`)  VALUES ('$inserted_id', '$productname', '$description' ,'$price', '$currency', '$inventory',  '$category') WHERE $category='Necklaces'");
 
 		$_SESSION["idproduct"]= $inserted_id;
+		$_SESSION["category_name"]= $category;
 		
 		if($result){
 			// $inserted_id = $c->db->insert_id();
@@ -162,11 +168,13 @@ class Products_model extends CI_Model{
 		
 
 	
-	public function upload($image,$id) {
+	public function upload($image,$id,$category_name) {
 		$c = &get_instance();
 			$c->load->database();
 	
 			$result = $c->db->query("UPDATE `Products` SET  url='$image' WHERE id='$id' ");
+			$_SESSION["idproduct"]= $id;
+			$_SESSION["category_name"]= $category_name;
 
 			if($result){
 				return array("statusCode"=>200);
@@ -313,5 +321,52 @@ class Products_model extends CI_Model{
 		}
   
 	 }
+	 public static function getcategory($category_name, $productid)
+	 {
+		  
+		$c = &get_instance();
+		$c->load->database();
+
+		$result = $c->db->query("INSERT INTO `category` (`category_name`, `productid`) VALUES ('$category_name', '$productid')");
+		$category_id = $c->db->insert_id();
+
+
+		$_SESSION["category_id "]= $category_id ;
+		
+		if($result){
+			return array("statusCode"=>200);
+
+			}
+		else{
+		return array("statusCode"=>201);
+
+		}
+  
+	 }
+	 public function show_category() {
+			
+		$c = &get_instance();
+		$c->load->database();
+		
+		$categories=[];
+		$result = $c->db->query("SELECT * FROM `category` ORDER BY `category_id` DESC");
+		$total=$result->num_rows();
+		if($total>0){
+			foreach ($result->result() as $row)
+		{
+			$category = new Products_model();
+		
+			$category->category_id = $row->category_id;
+			$category->category_name=$row->category_name;
+			$category->productid=$row->productid;
+			
+			$categories[] = $category;
+           
+		
+		}
+	}
+	return $categories;
+
+	}
 
 }

@@ -7,12 +7,13 @@
 </div>
 
 <div class="container m-5">
-<div class="row bg-dark" style="height: 100px;">
-	<div v-for="category in categories" class="bg-primary h-75">
-		<!-- <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 text-dark" v-html="category.category_name"></div> -->
-		<h2 class="bg-dark text-light h-25" v-html="category.category_name">
-		</h2>
-	</div>
+<div class="row">
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"></div>
 </div>
 <form action="" id="App" class="row" >
 		<div class="card bg-dark m-4 p-1" style="width: 15rem;--bs-bg-opacity: .2;border:none" v-for="product in products">
@@ -64,15 +65,14 @@
 			city:'',
 			category:'',
 			address:'',
-			productid:'<?php echo $productid?>',
-			category_name:'<?php echo $category_name?>',
-			categories:[],
+			
+		
+
+			
 		}
 	},
 	mounted(){
-		this.getlist(),
-		this.show_category(),
-		this.get_category()
+		this.getlist()
 		
 	},
 
@@ -120,54 +120,7 @@
 					});
 			
 		},
-		get_category(){
-			// if (!(this.productname)||!(this.url)||!(this.username)||!(this.description)||!(this.price)||!(this.currency)||!(this.inventory)||!(this.country)||!(this.city)||!(this.category)||!(this.address)){
-			// 			Swal.fire("Please fill the fields!");
-			// 			return;
-
-			// 	}
-			let url="<?php echo $PATH?>Shop/getcategory";
-			$.ajax({
-				url:url,
-				type:'POST',
-				data:{
-					category_name:this.category_name,
-					productid:this.productid,
-				},
-				success:(dataResult)=>{
-					var data = JSON.parse(dataResult);
-					if(data.statusCode==200){
-						Swal.fire("category added successfuly");
-										
-					}
-					else if(data.statusCode==201){
-						Swal.fire("sth went wronge");
-
-					}
-					
-					
-				},
-			
-			});
-		},		
-
-		show_category(){
-			let url = "<?php echo $PATH?>Shop/show_category"
-				$.ajax({
-								url:url,
-								type:'POST',
-								data:{
-								
-								},
-								success:(res)=>{
-									console.log();
-										var data = JSON.parse(res);
-										this.categories=data;
-								
-								}
-						})
-				
-		},
+		
 	    
 			
 

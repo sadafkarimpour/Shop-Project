@@ -125,10 +125,12 @@ Vue.createApp({
 			city:'2',
 			category:'3',
 			address:'',
+			
 		}
 
 	},
 	// mounted(){
+	
 	// },
 
   	methods:{
@@ -174,6 +176,7 @@ Vue.createApp({
 			});
 		},		
 
+		
 
 		}
 }).mount('#App2');

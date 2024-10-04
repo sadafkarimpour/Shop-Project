@@ -101,9 +101,9 @@ class Shop extends MY_controller{
 
 		$this->load->database();
 		$tbl="CREATE TABLE IF NOT EXISTS `category`(
-			`id` int(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+			`category_id` int(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 			`productid` int(255) NOT NULL,
-			`category` varchar(255) NOT NULL
+			`category_name` varchar(255) NOT NULL
 		)";
 
 
@@ -127,7 +127,7 @@ class Shop extends MY_controller{
 			'urllogin' => $path."Shop/login",
 			'urlregister' => $path."Shop/register",
 			'urllogout' => $path."Shop/logout",
-			'products'=>$path."Shop/products",
+			'products2'=>$path."Shop/products2",
 		];
 
 		$this->load->helper('url');
@@ -170,8 +170,8 @@ class Shop extends MY_controller{
 			'addproduct'=>$path."Shop/addproduct",
 			'salestatus'=>$path."Shop/salestatus",
 			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
 			'products'=>$path."Shop/products",
-
 		];
 
 		$this->load->helper('url');
@@ -221,6 +221,7 @@ class Shop extends MY_controller{
 			'salestatus'=>$path."Shop/salestatus",
 			'upload'=>$path."Shop/upload",
 			'products'=>$path."Shop/products",
+			'products2'=>$path."Shop/products2",
 
 		];
 		$this->load->view("menu1",$data);
@@ -244,6 +245,7 @@ class Shop extends MY_controller{
 			'urlregister' => $path."Shop/register",
 			'urllogout' => $path."Shop/logout",
 			'products'=>$path."Shop/products",
+			'products2'=>$path."Shop/products2",
 
 		];
 
@@ -295,6 +297,7 @@ class Shop extends MY_controller{
 			'urlregister' => $path."Shop/register",
 			'urllogout' => $path."Shop/logout",
 			'products'=>$path."Shop/products",
+			'products2'=>$path."Shop/products2",
 
 		];
 
@@ -418,6 +421,7 @@ class Shop extends MY_controller{
 			'salestatus'=>$path."Shop/salestatus",
 			'products'=>$path."Shop/products",
 			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
 		];
 		$this->load->view("menu1",$data);
 		$this->load->helper(array('url' , 'form'));
@@ -507,6 +511,7 @@ class Shop extends MY_controller{
 			'salestatus'=>$path."Shop/salestatus",
 			'upload'=>$path."Shop/upload",
 			'products'=>$path."Shop/products",
+			'products2'=>$path."Shop/products2",
 
 		];
 		$this->load->view("menu1",$data);
@@ -542,6 +547,7 @@ class Shop extends MY_controller{
 			// 'insertedid'=>$insertedId,
 			'idproduct'=>$idproduct,
 			'products'=>$path."Shop/products",
+			'products2'=>$path."Shop/products2",
 
 		];
 		$this->load->view("menu1",$data);
@@ -600,6 +606,7 @@ class Shop extends MY_controller{
 
 	public function do_upload() {
 		$idproduct = $_SESSION["idproduct"];
+		$category_name = $_SESSION["category_name"];
 	
 		$config['upload_path'] = './assets/uploadedimages/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
@@ -616,7 +623,7 @@ class Shop extends MY_controller{
 					// var_dump($insertedid);
 					$file_name = $uploaded_data['file_name'];
 					$this->load->model('Products_model');
-					$result = $this->Products_model->upload($file_name,$idproduct);
+					$result = $this->Products_model->upload($file_name,$idproduct, $category_name);
 				
 					if ($result) {
 						echo json_encode(['statusCode' => 200]);
@@ -652,6 +659,7 @@ class Shop extends MY_controller{
 			'salestatus'=>$path."Shop/salestatus",
 			'products'=>$path."Shop/products",
 			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
 		];
 		$this->load->view("menu",$data);
 		$this->load->helper(array('url' , 'form'));
@@ -659,6 +667,37 @@ class Shop extends MY_controller{
 		$this->load->view("footer",);
 	}
 	public function Products1(){
+
+		$this->Userstable();
+		$this->Productstable();
+		$idproduct = $_SESSION["idproduct"];
+		$category_name = $_SESSION["category_name"];
+		$this->load->view("header2");
+		$path="http://localhost/Shopproject/index.php/";
+		// $id = $_SESSION["id"];
+		// $usertype = $_SESSION["usertype"];
+		$data=[
+
+			'PATH' => $path,
+			'urllogin' => $path."Shop/login",
+			'urlregister' => $path."Shop/register",
+			'urllogout' => $path."Shop/logout",
+			'productid'=>$idproduct,
+			'category_name'=>$category_name,
+			'urldashboard'=>$path."Shop/dashboard",
+			'addproduct'=>$path."Shop/addproduct",
+			'salestatus'=>$path."Shop/salestatus",
+			'products'=>$path."Shop/products",
+			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
+		];
+		$this->load->view("menu1",$data);
+		$this->load->helper(array('url' , 'form'));
+		$this->load->view("products",$data);
+		$this->load->view("footer",);
+	}
+	
+	public function Products2(){
 
 		$this->Userstable();
 		$this->Productstable();
@@ -673,17 +712,16 @@ class Shop extends MY_controller{
 			'urllogin' => $path."Shop/login",
 			'urlregister' => $path."Shop/register",
 			'urllogout' => $path."Shop/logout",
-			// 'id'=>$id,
-			// 'usertype'=>$usertype,
 			'urldashboard'=>$path."Shop/dashboard",
 			'addproduct'=>$path."Shop/addproduct",
 			'salestatus'=>$path."Shop/salestatus",
 			'products'=>$path."Shop/products",
 			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
 		];
-		$this->load->view("menu1",$data);
+		$this->load->view("menu",$data);
 		$this->load->helper(array('url' , 'form'));
-		$this->load->view("products",$data);
+		$this->load->view("products2",$data);
 		$this->load->view("footer",);
 	}
 	
@@ -749,6 +787,7 @@ class Shop extends MY_controller{
 			'salestatus'=>$path."Shop/salestatus",
 			'products'=>$path."Shop/products",
 			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
 		];
 		$this->load->view("menu",$data);
 		$this->load->helper(array('url' , 'form'));
@@ -772,12 +811,34 @@ class Shop extends MY_controller{
 	}
 	
 	public function getcategory(){
-		// $limit=$this->input->post('limit');
-		// $offset=$this->input->post('offset');
-		$cate=$this->input->post('cate');
+		$this->Category();
+
+		$category_name=$this->input->post('category_name');
+		$productid=$this->input->post('productid');
 
 		$this->load->model('Products_model');
-		$result = $this->Products_model->getcategory($cate);
+		$result = $this->Products_model->getcategory($category_name, $productid);
+
+		if($result){
+			echo json_encode([
+				'statusCode'=>200
+			]);
+			return;
+		}
+        else{
+			echo json_encode([
+				'statusCode'=>201
+			]);
+			return;
+		}
+		
+	}
+	public function show_category(){
+
+		$this->Category();
+
+		$this->load->model('Products_model');
+		$result = $this->Products_model->show_category();
 
 		if($result){
 			echo json_encode($result);
@@ -786,6 +847,7 @@ class Shop extends MY_controller{
 
 		echo json_encode([]);
 	}
+
 	public function buy(){
 		$this->Userstable();
 		$this->Productstable();
@@ -834,6 +896,7 @@ class Shop extends MY_controller{
 			'salestatus'=>$path."Shop/salestatus",
 			'products'=>$path."Shop/products",
 			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
 		];
 		$this->load->view("menu",$data);
 		$this->load->helper(array('url' , 'form'));
@@ -897,6 +960,7 @@ class Shop extends MY_controller{
 			'salestatus'=>$path."Shop/salestatus",
 			'products'=>$path."Shop/products",
 			'upload'=>$path."Shop/upload",
+			'products2'=>$path."Shop/products2",
 		];
 		$this->load->view("menu",$data);
 		$this->load->helper(array('url' , 'form'));

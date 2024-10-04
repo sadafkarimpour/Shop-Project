@@ -15,7 +15,7 @@
 
 			<div class="row d-flex justify-content-center align-items-center text-center mt-3" style="opacity:0.5">
 				<div  class="col col-lg-12  col-md-12 col-sm-12 col-12  w-100 h-25 d-flex justify-content-center align-items-center text-center">
-					<button class="col col-lg-8 col-md-8 col-sm-8 col-8 btn btn-light text-dark w-25 p-3" style="font-size:20px;"  onclick="location.href='<?php echo $products?>'">Discover</button>
+					<button class="col col-lg-8 col-md-8 col-sm-8 col-8 btn btn-light text-dark w-25 p-3" style="font-size:20px;"  onclick="location.href='<?php echo $products2?>'">Discover</button>
 				</div>
 			</div>
 	
