@@ -119,7 +119,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 
 		$data=[
 
@@ -143,7 +143,7 @@ class Shop extends MY_controller{
 		$this->Userstable();
 		$this->Productstable();
 
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$id = $_SESSION["id"];
 		$name = $_SESSION["name"];
 		$lname = $_SESSION["lname"];
@@ -205,7 +205,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$id = $_SESSION["id"];
 		$usertype = $_SESSION["usertype"];
 		$data=[
@@ -237,7 +237,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$data=[
 
 			'PATH' => $path,
@@ -289,7 +289,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$data=[
 
 			'PATH' => $path,
@@ -341,7 +341,7 @@ class Shop extends MY_controller{
 	}
 
 	public function logout(){
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 
 		unset($_SESSION["id"]);
 		unset($_SESSION["name"]);
@@ -405,7 +405,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$id = $_SESSION["id"];
 		$usertype = $_SESSION["usertype"];
 		$data=[
@@ -495,7 +495,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$id = $_SESSION["id"];
 		$usertype = $_SESSION["usertype"];
 		$data=[
@@ -529,7 +529,7 @@ class Shop extends MY_controller{
 		// $insertedId = $this->input->get('id');
 		// var_dump($insertedId);
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$idproduct = $_SESSION["idproduct"];
 		$data=[
 
@@ -643,7 +643,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		// $id = $_SESSION["id"];
 		// $usertype = $_SESSION["usertype"];
 		$data=[
@@ -673,7 +673,7 @@ class Shop extends MY_controller{
 		$idproduct = $_SESSION["idproduct"];
 		$category_name = $_SESSION["category_name"];
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		// $id = $_SESSION["id"];
 		// $usertype = $_SESSION["usertype"];
 		$data=[
@@ -703,7 +703,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		// $id = $_SESSION["id"];
 		// $usertype = $_SESSION["usertype"];
 		$data=[
@@ -771,7 +771,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$id = $_SESSION["id"];
 		// $usertype = $_SESSION["usertype"];
 		$data=[
@@ -880,7 +880,7 @@ class Shop extends MY_controller{
 		$this->Productstable();
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$id = $_SESSION["id"];
 		// $usertype = $_SESSION["usertype"];
 		$data=[
@@ -944,7 +944,7 @@ class Shop extends MY_controller{
 	
 
 		$this->load->view("header2");
-		$path="http://localhost/Shopproject/index.php/";
+		$path="https://b8da-84-47-210-12.ngrok-free.app/";
 		$id = $_SESSION["iduser"];
 		// $usertype = $_SESSION["usertype"];
 		$data=[
